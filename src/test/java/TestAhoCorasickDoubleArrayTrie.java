@@ -182,7 +182,8 @@ public class TestAhoCorasickDoubleArrayTrie extends TestCase
         runTest("cn/dictionary.txt", "cn/text.txt");
     }
 
-    public void testSaveAndLoad() throws Exception
+    @SuppressWarnings("unchecked")
+	public void testSaveAndLoad() throws Exception
     {
         AhoCorasickDoubleArrayTrie<String> acdat = buildASimpleAhoCorasickDoubleArrayTrie();
         final String tmpPath = System.getProperty("java.io.tmpdir").replace("\\\\", "/") + "/acdat.tmp";
@@ -194,5 +195,6 @@ public class TestAhoCorasickDoubleArrayTrie extends TestCase
         ObjectInputStream in = new ObjectInputStream(new FileInputStream(tmpPath));
         acdat = (AhoCorasickDoubleArrayTrie<String>) in.readObject();
         validateASimpleAhoCorasickDoubleArrayTrie(acdat);
+        in.close();
     }
 }

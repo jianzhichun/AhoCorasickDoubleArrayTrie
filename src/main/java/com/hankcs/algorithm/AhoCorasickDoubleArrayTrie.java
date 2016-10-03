@@ -34,7 +34,8 @@ import java.util.concurrent.LinkedBlockingDeque;
  */
 public class AhoCorasickDoubleArrayTrie<V> implements Serializable
 {
-    /**
+	private static final long serialVersionUID = 8943304495060975963L;
+	/**
      * check array of the Double Array Trie structure
      */
     protected int check[];
@@ -179,7 +180,8 @@ public class AhoCorasickDoubleArrayTrie<V> implements Serializable
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public void load(ObjectInputStream in) throws IOException, ClassNotFoundException
+    @SuppressWarnings("unchecked")
+	public void load(ObjectInputStream in) throws IOException, ClassNotFoundException
     {
         base = (int[]) in.readObject();
         check = (int[]) in.readObject();
@@ -250,7 +252,8 @@ public class AhoCorasickDoubleArrayTrie<V> implements Serializable
      *
      * @param <V> the value type
      */
-    public class Hit<V>
+    @SuppressWarnings("hiding")
+	public class Hit<V>
     {
         /**
          * the beginning index, inclusive.
@@ -432,7 +435,8 @@ public class AhoCorasickDoubleArrayTrie<V> implements Serializable
      * @param nodePos  the starting position of the node for searching
      * @return the value index of the key, minus indicates null
      */
-    private int exactMatchSearch(char[] keyChars, int pos, int len, int nodePos)
+    @SuppressWarnings("unused")
+	private int exactMatchSearch(char[] keyChars, int pos, int len, int nodePos)
     {
         int result = -1;
 
